@@ -14,12 +14,12 @@ import java.util.List;
  */
 @Log
 @Component
-public class Scheduler {
+public class CronScheduler {
 
     private final DroneService droneService;
 
     @Autowired
-    public Scheduler(DroneService droneService) {
+    public CronScheduler(DroneService droneService) {
         this.droneService = droneService;
     }
 
@@ -28,7 +28,7 @@ public class Scheduler {
      *    0       0      8        *         *        ?
      */
     @Scheduled(cron = "*/5 * * * * *")
-    public void cronTask() {// TODO: 05.02.2023 make it changeable in runtime
+    public void checkBatteryLevelOfDrones() {// TODO: 05.02.2023 make it changeable in runtime
         List<Drone> allDrones = droneService.getAllDrones();
         if (allDrones != null && !allDrones.isEmpty()){
             allDrones.forEach(
