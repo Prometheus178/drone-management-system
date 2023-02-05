@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 /**
@@ -66,7 +65,7 @@ class DroneServiceTest {
     }
 
     @Test
-    void testFindAvailableForLoading(){
+    void testFindAvailableForLoading() {
         List<DroneState> availableToLoadStates = new ArrayList<>();
         availableToLoadStates.add(DroneState.IDLE);
         availableToLoadStates.add(DroneState.LOADING);

@@ -25,18 +25,18 @@ public class CronScheduler {
 
     /**
      * seconds minutes hours day-of-month month day-of-week
-     *    0       0      8        *         *        ?
+     * 0       0      8        *         *        ?
      */
     @Scheduled(cron = "*/5 * * * * *")
     public void checkBatteryLevelOfDrones() {// TODO: 05.02.2023 make it changeable in runtime
         List<Drone> allDrones = droneService.getAllDrones();
-        if (allDrones != null && !allDrones.isEmpty()){
+        if (allDrones != null && !allDrones.isEmpty()) {
             allDrones.forEach(
-                drone -> {
-                    long timestamp = System.currentTimeMillis();
-                    log.info("Battery level of drone: id=" +drone.getId() + " checked at: " + timestamp
-                            + " with level: " + drone.getBatteryCapacity());
-                }
+                    drone -> {
+                        long timestamp = System.currentTimeMillis();
+                        log.info("Battery level of drone: id=" + drone.getId() + " checked at: " + timestamp
+                                + " with level: " + drone.getBatteryCapacity());
+                    }
             );
         }
     }

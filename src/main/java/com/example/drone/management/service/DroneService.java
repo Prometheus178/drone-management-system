@@ -47,7 +47,7 @@ public class DroneService {
         if (!isValidPercentage(drone.getBatteryCapacity())) {
             throw new InvalidFieldException();
         }
-        if (!isValidSerialNumLength(drone.getSerialNumber())){
+        if (!isValidSerialNumLength(drone.getSerialNumber())) {
             throw new InvalidFieldException();
         }
         drone.setRemainingWeightCapacity(weightLimit);
@@ -60,8 +60,8 @@ public class DroneService {
         }
         if (!isValidPercentage(drone.getBatteryCapacity())) {
             throw new InvalidFieldException();
-        } 
-        if (!isValidSerialNumLength(drone.getSerialNumber())){
+        }
+        if (!isValidSerialNumLength(drone.getSerialNumber())) {
             throw new InvalidFieldException();
         }
         Drone existingDrone = droneRepository.findById(id).orElse(null);
