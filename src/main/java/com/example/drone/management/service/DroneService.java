@@ -42,7 +42,7 @@ public class DroneService {
         double weightLimit = drone.getWeightLimit();
         // TODO: 05.02.2023 chain responsibility
         if (!isValidWeightLimit(weightLimit)) {
-            throw new InvalidFieldException();
+            throw new InvalidFieldException(); // todo more appropriate exception for client
         }
         if (!isValidPercentage(drone.getBatteryCapacity())) {
             throw new InvalidFieldException();
