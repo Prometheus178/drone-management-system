@@ -40,7 +40,7 @@ public class DroneService {
 
     public Drone createDrone(Drone drone) {
         double weightLimit = drone.getWeightLimit();
-        // TODO: 05.02.2023 chain responsibility 
+        // TODO: 05.02.2023 chain responsibility
         if (!isValidWeightLimit(weightLimit)) {
             throw new InvalidFieldException();
         }
@@ -65,7 +65,7 @@ public class DroneService {
             throw new InvalidFieldException();
         }
         Drone existingDrone = droneRepository.findById(id).orElse(null);
-        existingDrone.setSerialNumber(drone.getSerialNumber()); // TODO: 05.02.2023 check or name will be cut 
+        existingDrone.setSerialNumber(drone.getSerialNumber());
         existingDrone.setModel(drone.getModel());
         existingDrone.setWeightLimit(drone.getWeightLimit());
         existingDrone.setBatteryCapacity(drone.getBatteryCapacity());
