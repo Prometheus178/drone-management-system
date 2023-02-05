@@ -32,7 +32,7 @@ public class Drone extends BaseEntity {
     @JoinColumn(name = "drone_id")
     private Set<Medication> medications = new HashSet<>();
 
-    @Column
+    @Column(name = "remaining_weight_capacity")
     private double remainingWeightCapacity;
 
 }

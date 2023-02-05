@@ -34,7 +34,7 @@ public class Scheduler {
             allDrones.forEach(
                 drone -> {
                     long timestamp = System.currentTimeMillis();
-                    log.info("Battery level of " +drone.getId() + " checked at: " + timestamp
+                    log.info("Battery level of drone: id=" +drone.getId() + " checked at: " + timestamp
                             + " with level: " + drone.getBatteryCapacity());
                 }
             );
