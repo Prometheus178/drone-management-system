@@ -74,5 +74,11 @@ public class DroneController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}/battery/level")
+    public ResponseEntity<Integer> findDroneBatteryLevelById(@PathVariable("id") Long id) {
+        Integer result = droneService.findDroneBatteryLevelById(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 
 }

@@ -124,6 +124,10 @@ public class DroneService {
         return droneRepository.findByStates(availableToLoadStates);
     }
 
+    public Integer findDroneBatteryLevelById(Long droneId) {
+        return droneRepository.findDroneBatteryCapacityById(droneId);
+    }
+
     private boolean isValidWeightLimit(double weightLimit) {
         return weightLimit < 500.0;
     }
