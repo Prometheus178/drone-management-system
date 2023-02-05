@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "32b44813-4a1f-4fc7-9100-664fdb98a167",
+		"name": "drones managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all medicatios",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get all drones",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create medication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pain reliever\",\n    \"weight\": 300,\n    \"code\": \"PAIN_RELIEVER_123\",\n    \"image\": \"data:image/png;base64,iVBORw0KG...\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/medications/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"medications",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create drones",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"serialNumber\": \"abc123\",\n    \"model\": \"LIGHTWEIGHT\",\n    \"weightLimit\": 450,\n    \"batteryCapacity\": 80,\n    \"state\": \"IDLE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/drones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drones",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "load medication",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/drones/1/load/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drones",
+						"1",
+						"load",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "available for loading",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/drones/available/for/loading",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drones",
+						"available",
+						"for",
+						"loading"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "drone battery level",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/drones/1/battery/level",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"drones",
+						"1",
+						"battery",
+						"level"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
