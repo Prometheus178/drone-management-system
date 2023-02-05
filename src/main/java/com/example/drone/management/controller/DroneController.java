@@ -1,12 +1,14 @@
 package com.example.drone.management.controller;
 
 import com.example.drone.management.entity.Drone;
+import com.example.drone.management.entity.Medication;
 import com.example.drone.management.service.DroneService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Author: Sergey.
@@ -43,7 +45,7 @@ public class DroneController {
         if (existingDrone == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        Drone updatedDrone = droneService.updateDrone(id, existingDrone);
+        Drone updatedDrone = droneService.updateDrone(id, drone);
         return new ResponseEntity<>(updatedDrone, HttpStatus.OK);
     }
 
@@ -52,4 +54,25 @@ public class DroneController {
     public void deleteDrone(@PathVariable Long id) {
         droneService.deleteDrone(id);
     }
+
+    @PutMapping("/{id}/load/{medicationId}")
+    public ResponseEntity<String> loadMedication(@PathVariable("id") Long id,
+                                                 @PathVariable("medicationId") Long medicationId) {
+        String result = droneService.loadMedication(id, medicationId);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/loaded/medication")
+    public ResponseEntity<Set<Medication>> getLoadedMedication(@PathVariable("id") Long id) {
+        Set<Medication> result = droneService.getLoadedMedication(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping("/available/for/loading")
+    public ResponseEntity<List<Drone>> findAvailableForLoading() {
+        List<Drone> result = droneService.findAvailableForLoading();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+
 }

@@ -3,9 +3,9 @@ package com.example.drone.management.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Author: Sergey.
@@ -13,12 +13,26 @@ import javax.persistence.Enumerated;
 @Getter
 @Setter
 @Entity
+@Table(name = "drone")
 public class Drone extends BaseEntity {
 
+    @Column(name = "serial_number", length = 100)
     private String serialNumber;
     @Enumerated(EnumType.STRING)
     private DroneModel model;
+    @Column
     private double weightLimit;
+    @Column
     private int batteryCapacity;
-    private String state;
+    @Enumerated(EnumType.STRING)
+    @Column
+    private DroneState state;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "drone_id")
+    private Set<Medication> medications = new HashSet<>();
+
+    @Column
+    private double remainingWeightCapacity;
+
 }
