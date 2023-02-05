@@ -4,6 +4,7 @@ import com.example.drone.management.entity.Drone;
 import com.example.drone.management.entity.DroneState;
 import com.example.drone.management.entity.Medication;
 import com.example.drone.management.exception.InvalidFieldException;
+import com.example.drone.management.exception.ObjectNotFoundException;
 import com.example.drone.management.repository.DroneRepository;
 import com.example.drone.management.repository.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import java.util.Set;
  */
 @Service
 public class DroneService {
+    private final static int LOW_NEED_TO_CHARGE = 25;
 
     private final DroneRepository droneRepository;
 
@@ -65,6 +67,9 @@ public class DroneService {
             throw new InvalidFieldException();
         }
         Drone existingDrone = droneRepository.findById(id).orElse(null);
+        if (existingDrone == null){
+            throw new ObjectNotFoundException();
+        }
         existingDrone.setSerialNumber(drone.getSerialNumber());
         existingDrone.setModel(drone.getModel());
         existingDrone.setWeightLimit(drone.getWeightLimit());
@@ -100,6 +105,10 @@ public class DroneService {
         if (drone.getRemainingWeightCapacity() < medication.getWeight()) {
             return "Medication weight more that drone remaining weight capacity.";
         }
+        int LOW_NEED_TO_CHARGE = 25;
+        if (drone.getBatteryCapacity() < LOW_NEED_TO_CHARGE) {
+            return "Drone battery low choose, need to charge.";
+        }
         double remaneWeight = drone.getRemainingWeightCapacity() - medication.getWeight();
         drone.setRemainingWeightCapacity(remaneWeight);
         if (remaneWeight == 0) {
@@ -129,7 +138,7 @@ public class DroneService {
     }
 
     private boolean isValidWeightLimit(double weightLimit) {
-        return weightLimit < 500.0;
+        return weightLimit <= 500.0;
     }
 
 
