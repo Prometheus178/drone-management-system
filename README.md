@@ -13,9 +13,8 @@
 ---
 ### How to run the project
 
-Change directory to the target folder in the cloned repository
-Run the jar file
-java -jar drone.management-0.0.1-SNAPSHOT.jar
+- Change directory to the target folder in the cloned repository
+- Run the jar file 'java -jar drone.management-0.0.1-SNAPSHOT.jar'
 ---
 ### How to test the project
 
