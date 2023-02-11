@@ -7,7 +7,7 @@
 ---
 ### How to build the project
 
-- Clone the repository "https://oauth:glpat-aQVDXFQSqcmAfRJHcqPy@gitlab.com/musala-coding-tasks-solutions/sergey-popov.git"
+- Clone the repository
 - Build the project using Maven
 `mvn clean install`
 ---
